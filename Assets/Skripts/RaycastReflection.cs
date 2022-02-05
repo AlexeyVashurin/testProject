@@ -19,7 +19,9 @@ public class RaycastReflection : MonoBehaviour
 
     public MirrorCoefficient MirrorCoefficient;
 
-   
+    public List<MirrorCoefficient> listMirrors;
+
+
 
     private void Awake()
     {
@@ -45,20 +47,26 @@ public class RaycastReflection : MonoBehaviour
         {
             if (Physics.Raycast(_ray.origin, _ray.direction, out _hit, remainingLength))
             {
-                if (_hit.collider.GetComponent<MirrorCoefficient>())
+                
+                if (_hit.collider.GetComponent<MirrorCoefficient>().checkHitRaycast == false)
                 {
+                    CurrentPower -= _hit.collider.GetComponent<MirrorCoefficient>().Coefficient;
                     
-
-                    // CurrentPower -= _hit.collider.GetComponent<MirrorCoefficient>().Coefficient;
+                    _hit.collider.GetComponent<MirrorCoefficient>().checkHitRaycast = true;
+                    listMirrors.Add(_hit.collider.GetComponent<MirrorCoefficient>());
                     // MirrorCoefficient = _hit.collider.GetComponent<MirrorCoefficient>();
                 }
                 _lineRenderer.positionCount += 1;
                 _lineRenderer.SetPosition(_lineRenderer.positionCount -1, _hit.point);
                 
+                
+                
                     remainingLength -= Vector3.Distance(_ray.origin, _hit.point);
-                    if (CurrentPower>10)
+                    _ray = new Ray(_hit.point, Vector3.Reflect(_ray.direction, _hit.normal)); 
+                    
+                    if (CurrentPower<10)
                     {
-                        _ray = new Ray(_hit.point, Vector3.Reflect(_ray.direction, _hit.normal)); 
+                        break;
                     }
                 
                 if (_hit.collider.tag != "Mirror")
@@ -74,6 +82,13 @@ public class RaycastReflection : MonoBehaviour
                     _lineRenderer.positionCount += 1;
                     _lineRenderer.SetPosition(_lineRenderer.positionCount-1, _ray.origin+_ray.direction*remainingLength);
                     CurrentPower = StartPower;
+                    for (int j = 0; j < listMirrors.Count; j++)
+                    {
+                        listMirrors[i].checkHitRaycast = false;
+                        listMirrors.RemoveAt(i);
+                    }
+                        
+                    
                     
                 } 
                 
@@ -83,11 +98,5 @@ public class RaycastReflection : MonoBehaviour
             }
         }
         
-    }
-
-
-    void minusIndex(int index)
-    {
-        CurrentPower -= index;
     }
 }
