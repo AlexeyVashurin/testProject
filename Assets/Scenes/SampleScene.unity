@@ -577,7 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 10
+  Coefficient: 0.2
   checkHitRaycast: 0
 --- !u!1 &552694172
 GameObject:
@@ -685,7 +685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 10
+  Coefficient: 0.2
   checkHitRaycast: 0
 --- !u!1 &571051505
 GameObject:
@@ -793,7 +793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 10
+  Coefficient: 0.2
   checkHitRaycast: 0
 --- !u!1 &583329613
 GameObject:
@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 10
+  Coefficient: 0.2
   checkHitRaycast: 0
 --- !u!1 &920319705
 GameObject:
@@ -1541,7 +1541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 10
+  Coefficient: 0.2
   checkHitRaycast: 0
 --- !u!1 &1176641895
 GameObject:
@@ -1861,7 +1861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 10
+  Coefficient: 0.2
   checkHitRaycast: 0
 --- !u!1 &1377542666
 GameObject:
@@ -1969,7 +1969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 10
+  Coefficient: 0.2
   checkHitRaycast: 0
 --- !u!1 &1661569737
 GameObject:
@@ -2077,7 +2077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 10
+  Coefficient: 0.2
   checkHitRaycast: 0
 --- !u!1 &1664378714
 GameObject:
@@ -2323,9 +2323,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a986cda296147564fa47448dae519562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPower: 50
-  CurrentPower: 369.75
+  StartPower: 1
+  MaxPower: 1
   MaxRayLenght: 230
+  usePower: 0
   MirrorCoefficient: {fileID: 0}
   listMirrors: []
 --- !u!120 &1731418642
@@ -2590,7 +2591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 10
+  Coefficient: 0.2
   checkHitRaycast: 0
 --- !u!1 &1916734043
 GameObject:
@@ -2698,7 +2699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 10
+  Coefficient: 0.2
   checkHitRaycast: 0
 --- !u!1 &2131079612
 GameObject:
