@@ -2323,12 +2323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a986cda296147564fa47448dae519562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPower: 1
   MaxPower: 1
-  MaxRayLenght: 230
+  MaxRayLenght: 100
   usePower: 0
-  MirrorCoefficient: {fileID: 0}
-  listMirrors: []
 --- !u!120 &1731418642
 LineRenderer:
   m_ObjectHideFlags: 0

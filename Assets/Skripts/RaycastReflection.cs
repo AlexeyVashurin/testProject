@@ -7,7 +7,6 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class RaycastReflection : MonoBehaviour
 {
-    public float StartPower;
     public float MaxPower;
     public float MaxRayLenght;
     public float usePower;
@@ -17,16 +16,14 @@ public class RaycastReflection : MonoBehaviour
     private RaycastHit _hit;
     private Vector3 _direction;
 
-    public MirrorCoefficient MirrorCoefficient;
-
-    public List<MirrorCoefficient> listMirrors;
+    private MirrorCoefficient lastHitMirror;
 
 
     private void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
     }
-    
+
     void Update()
     {
         _ray = new Ray(transform.position, transform.up);
@@ -35,11 +32,11 @@ public class RaycastReflection : MonoBehaviour
         _lineRenderer.SetPosition(0, transform.position);
         float remainingLength = MaxRayLenght;
 
-        for (usePower = 0; usePower < MaxPower; usePower+=MirrorCoefficient.Coefficient)
+        for (usePower = 0; usePower < MaxPower; usePower += lastHitMirror.Coefficient)
         {
             if (Physics.Raycast(_ray.origin, _ray.direction, out _hit, remainingLength))
             {
-                MirrorCoefficient = _hit.collider.GetComponent<MirrorCoefficient>();
+                lastHitMirror = _hit.collider.GetComponent<MirrorCoefficient>();
 
                 _lineRenderer.positionCount += 1;
                 _lineRenderer.SetPosition(_lineRenderer.positionCount - 1, _hit.point);
@@ -54,14 +51,12 @@ public class RaycastReflection : MonoBehaviour
             }
             else
             {
-                if (_lineRenderer.positionCount == 1)
-                {
+                
                     _lineRenderer.positionCount += 1;
                     _lineRenderer.SetPosition(_lineRenderer.positionCount - 1,
                         _ray.origin + _ray.direction * remainingLength);
-                    MaxPower = StartPower;
-                    MirrorCoefficient = null;
-                }
+                    lastHitMirror = null;
+                
 
                 break;
             }
