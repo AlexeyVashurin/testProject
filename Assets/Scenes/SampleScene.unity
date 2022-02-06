@@ -793,7 +793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 0.2
+  Coefficient: 0.4
   checkHitRaycast: 0
 --- !u!1 &583329613
 GameObject:
@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 0.2
+  Coefficient: 0.4
   checkHitRaycast: 0
 --- !u!1 &920319705
 GameObject:
@@ -1541,7 +1541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 0.2
+  Coefficient: 0.3
   checkHitRaycast: 0
 --- !u!1 &1176641895
 GameObject:
@@ -1861,7 +1861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 0.2
+  Coefficient: 0.3
   checkHitRaycast: 0
 --- !u!1 &1377542666
 GameObject:
@@ -1969,7 +1969,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 0.2
+  Coefficient: 0.4
   checkHitRaycast: 0
 --- !u!1 &1661569737
 GameObject:
@@ -2591,7 +2591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 0.2
+  Coefficient: 0.4
   checkHitRaycast: 0
 --- !u!1 &1916734043
 GameObject:
@@ -2699,7 +2699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83744bfd4ae8db544a2fc61004eef9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Coefficient: 0.2
+  Coefficient: 0.3
   checkHitRaycast: 0
 --- !u!1 &2131079612
 GameObject:

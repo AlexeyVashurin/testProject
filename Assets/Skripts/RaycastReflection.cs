@@ -35,18 +35,11 @@ public class RaycastReflection : MonoBehaviour
         _lineRenderer.SetPosition(0, transform.position);
         float remainingLength = MaxRayLenght;
 
-        for (usePower = 0; usePower < MaxPower; usePower+=listMirrors[listMirrors.Count-1].Coefficient)
+        for (usePower = 0; usePower < MaxPower; usePower+=MirrorCoefficient.Coefficient)
         {
             if (Physics.Raycast(_ray.origin, _ray.direction, out _hit, remainingLength))
             {
-                if (_hit.collider.GetComponent<MirrorCoefficient>().checkHitRaycast == false && StartPower+_hit.collider.GetComponent<MirrorCoefficient>().Coefficient > _hit.collider.GetComponent<MirrorCoefficient>().Coefficient)
-                {
-                    //MaxPower -= _hit.collider.GetComponent<MirrorCoefficient>().Coefficient;
-                    
-
-                    _hit.collider.GetComponent<MirrorCoefficient>().checkHitRaycast = true;
-                    listMirrors.Add(_hit.collider.GetComponent<MirrorCoefficient>());
-                }
+                MirrorCoefficient = _hit.collider.GetComponent<MirrorCoefficient>();
 
                 _lineRenderer.positionCount += 1;
                 _lineRenderer.SetPosition(_lineRenderer.positionCount - 1, _hit.point);
@@ -67,11 +60,7 @@ public class RaycastReflection : MonoBehaviour
                     _lineRenderer.SetPosition(_lineRenderer.positionCount - 1,
                         _ray.origin + _ray.direction * remainingLength);
                     MaxPower = StartPower;
-                    for (int j = 0; j < listMirrors.Count; j++)
-                    {
-                        listMirrors[j].checkHitRaycast = false;
-                        listMirrors.RemoveAt(j);
-                    }
+                    MirrorCoefficient = null;
                 }
 
                 break;
