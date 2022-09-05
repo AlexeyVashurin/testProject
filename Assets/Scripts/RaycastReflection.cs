@@ -7,56 +7,55 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class RaycastReflection : MonoBehaviour
 {
-    public float MaxPower;
-    public float MaxRayLenght;
-    public float usePower;
+    [SerializeField] private float _maxPower;
+    [SerializeField] private float _maxRayLenght;
+    [SerializeField] private float _usePower;
 
-    private LineRenderer _lineRenderer;
-    private Ray _ray;
-    private RaycastHit _hit;
-    private Vector3 _direction;
+    private LineRenderer lineRenderer;
+    private Ray ray;
+    private RaycastHit hit;
+    private Vector3 direction;
 
     private MirrorCoefficient lastHitMirror;
 
 
     private void Awake()
     {
-        _lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer = GetComponent<LineRenderer>();
     }
 
     void Update()
     {
-        _ray = new Ray(transform.position, transform.up);
+        ray = new Ray(transform.position, transform.up);
 
-        _lineRenderer.positionCount = 1;
-        _lineRenderer.SetPosition(0, transform.position);
-        float remainingLength = MaxRayLenght;
+        lineRenderer.positionCount = 1;
+        lineRenderer.SetPosition(0, transform.position);
+        float remainingLength = _maxRayLenght;
 
-        for (usePower = 0; usePower < MaxPower; usePower += lastHitMirror.Coefficient)
+        for (_usePower = 0; _usePower < _maxPower; _usePower += lastHitMirror.Coefficient)
         {
-            if (Physics.Raycast(_ray.origin, _ray.direction, out _hit, remainingLength))
+            if (Physics.Raycast(ray.origin, ray.direction, out hit, remainingLength))
             {
-                lastHitMirror = _hit.collider.GetComponent<MirrorCoefficient>();
+                lastHitMirror = hit.collider.GetComponent<MirrorCoefficient>();
 
-                _lineRenderer.positionCount += 1;
-                _lineRenderer.SetPosition(_lineRenderer.positionCount - 1, _hit.point);
-
-
-                remainingLength -= Vector3.Distance(_ray.origin, _hit.point);
-                _ray = new Ray(_hit.point, Vector3.Reflect(_ray.direction, _hit.normal));
+                lineRenderer.positionCount += 1;
+                lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
 
 
-                if (_hit.collider.tag != "Mirror")
+                remainingLength -= Vector3.Distance(ray.origin, hit.point);
+                ray = new Ray(hit.point, Vector3.Reflect(ray.direction, hit.normal));
+
+
+                if (hit.collider.tag != "Mirror")
                     break;
             }
             else
             {
-                
-                    _lineRenderer.positionCount += 1;
-                    _lineRenderer.SetPosition(_lineRenderer.positionCount - 1,
-                        _ray.origin + _ray.direction * remainingLength);
-                    lastHitMirror = null;
-                
+                lineRenderer.positionCount += 1;
+                lineRenderer.SetPosition(lineRenderer.positionCount - 1,
+                    ray.origin + ray.direction * remainingLength);
+                lastHitMirror = null;
+
 
                 break;
             }
