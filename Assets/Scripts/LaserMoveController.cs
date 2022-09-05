@@ -2,15 +2,12 @@
 
 public class LaserMoveController : MonoBehaviour
 {
-    [SerializeField]private GameObject _gun, _platform;
-    
-    
-
+    [SerializeField] private GameObject _gun, _platform;
     [SerializeField] private LaserControlView _laserControlView;
 
     void Start()
     {
-        _laserControlView.Subscribe(MoveLeft,MoveRight,MoveUp,MoveDown);
+        _laserControlView.Subscribe(MoveLeft, MoveRight, MoveUp, MoveDown);
     }
 
     private void MoveRight()
