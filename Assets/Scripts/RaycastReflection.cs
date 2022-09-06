@@ -15,10 +15,8 @@ public class RaycastReflection : MonoBehaviour
     private Ray ray;
     private RaycastHit hit;
     private Vector3 direction;
-
     private MirrorCoefficient lastHitMirror;
-
-
+    
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -27,7 +25,6 @@ public class RaycastReflection : MonoBehaviour
     void Update()
     {
         ray = new Ray(transform.position, transform.up);
-
         lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0, transform.position);
         float remainingLength = _maxRayLenght;
@@ -37,15 +34,10 @@ public class RaycastReflection : MonoBehaviour
             if (Physics.Raycast(ray.origin, ray.direction, out hit, remainingLength))
             {
                 lastHitMirror = hit.collider.GetComponent<MirrorCoefficient>();
-
                 lineRenderer.positionCount += 1;
                 lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
-
-
                 remainingLength -= Vector3.Distance(ray.origin, hit.point);
                 ray = new Ray(hit.point, Vector3.Reflect(ray.direction, hit.normal));
-
-
                 if (hit.collider.tag != "Mirror")
                     break;
             }
@@ -55,8 +47,6 @@ public class RaycastReflection : MonoBehaviour
                 lineRenderer.SetPosition(lineRenderer.positionCount - 1,
                     ray.origin + ray.direction * remainingLength);
                 lastHitMirror = null;
-
-
                 break;
             }
         }

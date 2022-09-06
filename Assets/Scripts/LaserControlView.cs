@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LaserControlView : MonoBehaviour
 {
-    [SerializeField]private Button rotateLeftPlatformButton, rotateRightPlatformButton, moveUpButton, moveDownButton;
+    [SerializeField] private Button rotateLeftPlatformButton, rotateRightPlatformButton, moveUpButton, moveDownButton;
 
     public void Subscribe(Action moveLeft, Action moveRight, Action moveUp, Action moveDown)
     {
@@ -15,5 +15,4 @@ public class LaserControlView : MonoBehaviour
         moveUpButton.onClick.AddListener(moveUp.Invoke);
         moveDownButton.onClick.AddListener(moveDown.Invoke);
     }
-
 }
